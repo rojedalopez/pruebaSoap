@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Material_Despachado_Out" targetNamespace="urn:uniban:tropico:erpdev" xmlns:SOAP="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:p1="urn:uniban:tropico:erpdev" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+  <wsp:UsingPolicy wsdl:required="true"/>
+  <wsdl:documentation/>
+  <wsp:Policy wsu:Id="OP_Ingresar"/>
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:uniban:tropico:erpdev" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:uniban:tropico:erpdev">
+      <xsd:element name="Material_Despachado_response" type="Return"/>
+      <xsd:element name="Material_Despachado_request" type="Lista_Materiales"/>
+      <xsd:complexType name="Items">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">Detalle del material</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="InPedCompras">
+            <xsd:annotation>
+              <xsd:documentation>Codigo del pedido de compras</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="1"/>
+                <xsd:maxLength value="10"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="InCodProveedor">
+            <xsd:annotation>
+              <xsd:documentation>Codigo del proveedor en SAP</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="1"/>
+                <xsd:maxLength value="10"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="InCodMaterial">
+            <xsd:annotation>
+              <xsd:documentation>Codigo del material</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="1"/>
+                <xsd:maxLength value="18"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="InCodPosicion">
+            <xsd:annotation>
+              <xsd:documentation>Codigo de la posicion</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="1"/>
+                <xsd:maxLength value="5"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="InCodLote">
+            <xsd:annotation>
+              <xsd:documentation>Codigo del lote (codigo kit)</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="1"/>
+                <xsd:maxLength value="10"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="InCodItem">
+            <xsd:annotation>
+              <xsd:documentation>Codigo de la característica enviada del kit</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="1"/>
+                <xsd:maxLength value="30"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="InValor">
+            <xsd:annotation>
+              <xsd:documentation>Valor de la característica</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="1"/>
+                <xsd:maxLength value="255"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="InCantidad">
+            <xsd:annotation>
+              <xsd:documentation>Cantidad de unidades Codigo Error</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:decimal">
+                <xsd:totalDigits value="13"/>
+                <xsd:fractionDigits value="3"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Return">
+        <xsd:sequence>
+          <xsd:element name="OuiCodError" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Codigo Error</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="0"/>
+                <xsd:maxLength value="2"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+          <xsd:element name="OuvMsgError" minOccurs="0">
+            <xsd:annotation>
+              <xsd:documentation>Descripcion Error</xsd:documentation>
+            </xsd:annotation>
+            <xsd:simpleType>
+              <xsd:restriction base="xsd:string">
+                <xsd:minLength value="0"/>
+                <xsd:maxLength value="500"/>
+              </xsd:restriction>
+            </xsd:simpleType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Lista_Materiales">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="EN">Lista de materiales</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="Items" type="Items" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="Material_Despachado_request">
+    <wsdl:documentation/>
+    <wsdl:part name="Material_Despachado_request" element="p1:Material_Despachado_request"/>
+  </wsdl:message>
+  <wsdl:message name="Material_Despachado_response">
+    <wsdl:documentation/>
+    <wsdl:part name="Material_Despachado_response" element="p1:Material_Despachado_response"/>
+  </wsdl:message>
+  <wsdl:portType name="Material_Despachado_Out">
+    <wsdl:documentation/>
+    <wsdl:operation name="Ingresar">
+      <wsdl:documentation/>
+      <wsp:Policy>
+        <wsp:PolicyReference URI="#OP_Ingresar"/>
+      </wsp:Policy>
+      <wsdl:input message="p1:Material_Despachado_request"/>
+      <wsdl:output message="p1:Material_Despachado_response"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Material_Despachado_Out" type="p1:Material_Despachado_Out">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+    <wsdl:operation name="Ingresar">
+      <soap:operation soapAction="http://sap.com/xi/WebService/soap1.1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+      <wsdl:input>
+        <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Material_Despachado">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Infocarga Client Interface</wsdl:documentation>
+    <wsdl:port name="Material_Despachado_Out" binding="p1:Material_Despachado_Out">
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

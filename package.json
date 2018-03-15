@@ -1,0 +1,23 @@
+{
+  "name": "pruebasoap",
+  "version": "1.0.0",
+  "description": "Consumo de soap",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ROJEDALOPEZ",
+  "license": "ISC",
+  "dependencies": {
+    "soap": "^0.23.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rojedalopez/pruebaSoap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rojedalopez/pruebaSoap/issues"
+  },
+  "homepage": "https://github.com/rojedalopez/pruebaSoap#readme"
+}
